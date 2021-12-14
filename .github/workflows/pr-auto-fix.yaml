@@ -67,7 +67,7 @@ jobs:
         run: ${{ github.workspace }}/tools/distrib/clang_tidy_code.sh --fix --only-changed || true
       - name: Run sanitize
         run: ${{ github.workspace }}/tools/distrib/sanitize.sh
-      - name:
+      - name: run testcases
         run: python3 ${{ github.workspace }}/tools/run_tests/run_tests.py -l c++ -j 4
       # Report back with a PR if things are broken
       - name: Create Pull Request
