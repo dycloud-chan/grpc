@@ -63,7 +63,7 @@ jobs:
           submodules: True
           fetch-depth: 0
         run: |
-          python3 tools/run_tests/run_tests.py -l c++ -j 4
+          python3 ${{ github.workspace }}/tools/run_tests/run_tests.py -l c++ -j 4
       # Run the things!
       - name: clang-tidy fixes
         run: ${{ github.workspace }}/tools/distrib/clang_tidy_code.sh --fix --only-changed || true
