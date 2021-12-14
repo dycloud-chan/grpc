@@ -1,8 +1,23 @@
-name: libyang CI
+name: run tests
 on:
   workflow_dispatch:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    name: testcases
+    
     steps:
-      - run: python3 tools/run_tests/run_tests.py -l c++ -j 4
+      - uses: actions/checkout@v2
+      
+      - name: Set up python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+          
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run tests
+        run: |
+          python3 tools/run_tests/run_tests.py -l c++ -j 4
