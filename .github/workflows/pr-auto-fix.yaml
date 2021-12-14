@@ -62,13 +62,13 @@ jobs:
         with:
           submodules: True
           fetch-depth: 0
-        run: |
-          python3 ${{ github.workspace }}/tools/run_tests/run_tests.py -l c++ -j 4
       # Run the things!
       - name: clang-tidy fixes
         run: ${{ github.workspace }}/tools/distrib/clang_tidy_code.sh --fix --only-changed || true
       - name: Run sanitize
         run: ${{ github.workspace }}/tools/distrib/sanitize.sh
+      - name:
+        run: python3 ${{ github.workspace }}/tools/run_tests/run_tests.py -l c++ -j 4
       # Report back with a PR if things are broken
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
