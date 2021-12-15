@@ -1,5 +1,6 @@
 name: PR AutoFix
-on: [push]
+on:
+  workflow_dispatch:
 jobs:
   PRAutoFix:
     runs-on: ubuntu-latest
